@@ -3,6 +3,8 @@ import { Link, useRouteError } from "react-router-dom";
 const ErrorPage = () => {
   const error = useRouteError();
 
+  console.log(error);
+
   if (error.status === 404) {
     return (
       <main className="grid min-h-[100vh] place-items-center px-6">
@@ -22,13 +24,15 @@ const ErrorPage = () => {
         </div>
       </main>
     );
+  } else {
+    return (
+      <main className="grid min-h-[100vh] place-items-center px-6">
+        <h4 className="text-center font-bold text-4xl">
+          Internal Server Error Occured
+        </h4>
+      </main>
+    );
   }
-
-  return (
-    <main className="grid min-h-[100vh] place-items-center px-6">
-      <h4 className="text-center font-bold text-4xl">Not Found </h4>
-    </main>
-  );
 };
 
 export default ErrorPage;
