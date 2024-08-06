@@ -8,7 +8,7 @@ const HomeLayout = () => {
         <Header />
         <Navbar />
       </nav>
-      <section className="make-center py-25">
+      <section className="make-center py-24">
         <Outlet />
       </section>
     </>
