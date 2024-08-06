@@ -1,9 +1,10 @@
 import { useLoaderData, Link } from "react-router-dom";
 import { FaShoppingBasket } from "react-icons/fa";
+import { formatPrice } from "../utils";
 
 const ProductsGrid = () => {
   const { products, count } = useLoaderData();
-  console.log(products);
+
   return (
     <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {products.map((product) => {
@@ -26,16 +27,18 @@ const ProductsGrid = () => {
               <img src={image} alt={name} />
             </Link>
             <div className="card-body">
-              <h2 className="card-title">
+              <h2 className="card-title uppercase">
                 {name}
-                <div className="badge badge-secondary">{price}</div>
+                <div className="badge badge-primary">
+                  {formatPrice(price)}
+                </div>
               </h2>
               <div className="card-actions justify-between">
                 <div className="flex gap-3">
                   <div className="badge badge-outline">
                     {freeShipping ? "Free shipping" : "Extra Cost"}
                   </div>
-                  <div className="badge badge-outline">{brand}</div>
+                  <div className="badge badge-outline capitalize">{brand}</div>
                 </div>
                 <div>
                   <div className="badge badge-outline">
