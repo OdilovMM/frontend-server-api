@@ -5,8 +5,8 @@ import { BsFillGridFill, BsList } from "react-icons/bs";
 import { useLoaderData } from "react-router-dom";
 
 const ProductsContainer = () => {
-  const { products,totalProducts, meta } = useLoaderData();
-  
+  const { totalProducts } = useLoaderData();
+
   const [layout, setLayout] = useState("grid");
   const setActiveStyles = (pattern) => {
     return `text-xl btn btn-circle btn-sm ${

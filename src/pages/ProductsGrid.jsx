@@ -4,7 +4,6 @@ import { formatPrice } from "../utils";
 
 const ProductsGrid = () => {
   const { products } = useLoaderData();
-  console.log(products);
 
   return (
     <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -16,8 +15,6 @@ const ProductsGrid = () => {
           price,
           brand,
           avgRating,
-          description,
-          _id,
         } = product;
         return (
           <div
@@ -25,7 +22,7 @@ const ProductsGrid = () => {
             className="card bg-base-100 w-98 shadow-xl overflow-hidden"
           >
             <div className="max-h-[220px] ">
-              <Link to={`/products/${product._id}`}>
+              <Link to={`/products/${product._id}` }>
                 <img
                   src={image}
                   alt={name}
