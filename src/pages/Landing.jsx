@@ -1,7 +1,7 @@
 import { FeaturedProducts, Hero } from "../components";
 import { customFetch } from "../utils";
 
-const url = "/products/all-products?freeShipping=false";
+const url = "/products/all-products?featured=true";
 
 export const loader = async () => {
   const response = await customFetch.get(url);

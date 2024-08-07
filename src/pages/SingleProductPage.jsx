@@ -18,7 +18,6 @@ const SingleProductPage = () => {
     brand,
     description,
     freeShipping,
-
     image,
     inventory,
     name,
@@ -26,6 +25,7 @@ const SingleProductPage = () => {
     numOfReviews,
     price,
   } = product.product;
+  console.log(product.product);
 
   const [productColor, setProductColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
@@ -55,12 +55,13 @@ const SingleProductPage = () => {
         />
         {/* product */}
         <div>
-          <h1 className="capitalize text-3xl font-bold">{name}</h1>
+          <h1 className="capitalize text-3xl font-bold"> {name}</h1>
           <h3 className="text-xl text-neutral-content font-bold mt-2">
+            <span className="capitalize text-stone-400"> brand name: </span>
             {brand}
           </h3>
           <p className="mt-3 text-xl">{formatPrice(price)}</p>
-          <p className="mt-3 text-xl">Category: {category.name}</p>
+          <p className="mt-3 text-xl capitalize">Category: {category}</p>
           <p className="mt-3 text-xl">Reviews: {numOfReviews}</p>
           <p className="mt-3 text-xl">Rating ⭐: {avgRating}</p>
           <p className="mt-6 leading-8">{description}</p>

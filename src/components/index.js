@@ -8,6 +8,9 @@ import Carousel from "./Carousel";
 import ErrorElement from "./ErrorElement";
 import FeaturedProducts from "./FeaturedProducts";
 import SectionTitle from "./SectionTitle";
+import PaginationContainer from "./PaginationContainer";
+import ProductsContainer from "./ProductsContainer";
+import Filters from "./Filters";
 
 export {
   FormInput,
@@ -20,4 +23,7 @@ export {
   Carousel,
   FeaturedProducts,
   SectionTitle,
+  PaginationContainer,
+  ProductsContainer,
+  Filters,
 };
