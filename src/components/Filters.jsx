@@ -35,7 +35,7 @@ const Filters = () => {
       <FormSelect
         label="sort by"
         name="sort"
-        list={["a-z", "z-a", "high", "low"]}
+        list={["high", "low"]}
         size="select-sm"
         defaultValue={sort}
       />
