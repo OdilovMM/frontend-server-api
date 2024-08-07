@@ -7,8 +7,8 @@ const productsUrl = "/products/all-products";
 
 export const loader = async ({ request }) => {
   const response = await customFetch.get(productsUrl);
-  const products = response.data;
-  return products;
+  const { products, totalProducts, meta } = response.data;
+  return { products, totalProducts, meta };
 };
 
 const Products = () => {

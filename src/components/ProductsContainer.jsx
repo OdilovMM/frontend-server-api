@@ -5,7 +5,8 @@ import { BsFillGridFill, BsList } from "react-icons/bs";
 import { useLoaderData } from "react-router-dom";
 
 const ProductsContainer = () => {
-  const { products } = useLoaderData();
+  const { products,totalProducts, meta } = useLoaderData();
+  
   const [layout, setLayout] = useState("grid");
   const setActiveStyles = (pattern) => {
     return `text-xl btn btn-circle btn-sm ${
@@ -18,7 +19,7 @@ const ProductsContainer = () => {
     <>
       <div className="flex justify-between items-center mt-8 border-b pb-5 border-base-300">
         <h4 className="font-medium text-md">
-          {products.length} product{products.length > 1 && "s"}
+          {totalProducts} product{totalProducts > 1 && "s"}
         </h4>
         <div className="flex gap-4">
           <button
@@ -38,7 +39,7 @@ const ProductsContainer = () => {
         </div>
       </div>
       <div>
-        {products.length === 0 ? (
+        {totalProducts === 0 ? (
           <h5 className="text-2xl mt-16">No products found</h5>
         ) : layout === "grid" ? (
           <ProductsGrid />

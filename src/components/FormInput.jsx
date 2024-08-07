@@ -1,13 +1,13 @@
-const FormInput = ({ label, name, type, placeholder }) => {
+const FormInput = ({ label, name, type, placeholder, size }) => {
   return (
-    <div className="form-control w-full max-w-xs ">
-      <label className="input input-bordered flex items-center gap-2">
+    <div className="form-control w-[350px] max-w-xs ">
+      <label className="input input-bordered flex items-center justify-normal gap-2">
         {label}
         <input
           type={type}
-          className="grow"
           name={name}
           placeholder={placeholder}
+          className={`input items-end grow `}
         />
       </label>
     </div>

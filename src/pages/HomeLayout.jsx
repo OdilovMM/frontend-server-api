@@ -1,16 +1,22 @@
-import { Outlet } from "react-router-dom";
-import { Header, Navbar } from "../components";
+import { Outlet, useNavigation } from "react-router-dom";
+import { Header, Navbar, Loading } from "../components";
 
 const HomeLayout = () => {
+  const navigation = useNavigation();
+  const isPageLoading = navigation.state === "loading";
   return (
     <>
-      <nav>
+      <>
         <Header />
         <Navbar />
-      </nav>
-      <section className="make-center py-24">
-        <Outlet />
-      </section>
+        {isPageLoading ? (
+          <Loading />
+        ) : (
+          <section className="make-center py-24">
+            <Outlet />
+          </section>
+        )}
+      </>
     </>
   );
 };

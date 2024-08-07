@@ -11,6 +11,8 @@ import SectionTitle from "./SectionTitle";
 import PaginationContainer from "./PaginationContainer";
 import ProductsContainer from "./ProductsContainer";
 import Filters from "./Filters";
+import Loading from "./Loading";
+
 
 export {
   FormInput,
@@ -26,4 +28,5 @@ export {
   PaginationContainer,
   ProductsContainer,
   Filters,
+  Loading
 };
