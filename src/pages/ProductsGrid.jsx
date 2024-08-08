@@ -1,28 +1,30 @@
 import { useLoaderData, Link } from "react-router-dom";
 import { FaShoppingBasket } from "react-icons/fa";
 import { formatPrice } from "../utils";
+import { useDispatch } from "react-redux";
+import { addItem } from "../features/cart/cartSlice";
 
 const ProductsGrid = () => {
   const { products } = useLoaderData();
+  const dispatch = useDispatch();
+
+  console.log(products);
+
+  const addToCart = () => {
+    dispatch();
+  };
 
   return (
     <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {products?.map((product) => {
-        const {
-          name,
-          freeShipping,
-          image,
-          price,
-          brand,
-          avgRating,
-        } = product;
+        const { name, freeShipping, image, price, brand, avgRating } = product;
         return (
           <div
             key={product._id}
             className="card bg-base-100 w-98 shadow-xl overflow-hidden"
           >
             <div className="max-h-[220px] ">
-              <Link to={`/products/${product._id}` }>
+              <Link to={`/products/${product._id}`}>
                 <img
                   src={image}
                   alt={name}
@@ -40,11 +42,13 @@ const ProductsGrid = () => {
                   </p>
                   <p className="badge badge-outline capitalize">{brand}</p>
                 </div>
-                <p className="badge badge-outline capitalize text-end">{avgRating}⭐</p>
+                <p className="badge badge-outline capitalize text-end">
+                  {avgRating}⭐
+                </p>
               </div>
-              <div className="badge badge-outline mt-3">
+              <button className="badge badge-outline mt-3" onClick={()=>addToCart()}>
                 <FaShoppingBasket className="h-10 w-6 cursor-pointer" />
-              </div>
+              </button>
             </div>
           </div>
         );

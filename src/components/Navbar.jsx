@@ -5,14 +5,15 @@ import { NavLink } from "react-router-dom";
 import Navlinks from "./Navlinks";
 import { useEffect, useState } from "react";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 const themes = {
   acid: "acid",
   dracula: "dracula",
 };
 
-const getThemeLocalStorage = () => {
-  return localStorage.getItem("theme") || theme.acid;
+const getThemeLocalStorage = (theme) => {
+  return localStorage.getItem("theme") || theme?.acid;
 };
 
 const Navbar = () => {
@@ -28,6 +29,8 @@ const Navbar = () => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
   }, [theme]);
+
+  const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
 
   return (
     <nav className=" bg-base-200">
@@ -76,7 +79,7 @@ const Navbar = () => {
             <div className="indicator">
               <BiCartAlt className="h-6 w-6" color="white" />
               <span className="badge badge-sm badge-primary indicator-item">
-                5
+                {numItemsInCart}
               </span>
             </div>
           </NavLink>

@@ -12,7 +12,8 @@ import PaginationContainer from "./PaginationContainer";
 import ProductsContainer from "./ProductsContainer";
 import Filters from "./Filters";
 import Loading from "./Loading";
-
+import CartTotals from "./CartTotals";
+import CartItem from "./CartItem";
 
 export {
   FormInput,
@@ -28,5 +29,7 @@ export {
   PaginationContainer,
   ProductsContainer,
   Filters,
-  Loading
+  Loading,
+  CartTotals,
+  CartItem,
 };
