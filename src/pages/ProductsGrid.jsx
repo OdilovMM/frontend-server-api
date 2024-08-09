@@ -8,7 +8,6 @@ const ProductsGrid = () => {
   const { products } = useLoaderData();
   const dispatch = useDispatch();
 
-  console.log(products);
 
   const addToCart = () => {
     dispatch();

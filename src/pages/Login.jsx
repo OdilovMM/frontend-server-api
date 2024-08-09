@@ -1,5 +1,28 @@
-import { Form, Link } from "react-router-dom";
+import { Form, Link, redirect, useNavigate } from "react-router-dom";
 import { Button, FormInput } from "../components";
+import { customFetch } from "../utils";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+
+import { loginUser } from "../features/user/userSlice.js";
+
+export const action =
+  (store) =>
+  async ({ request }) => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+
+    try {
+      const response = await customFetch.post("/auth/login", data);
+      console.log(response);
+      store.dispatch(loginUser(response.data));
+      toast.success("Logged in");
+      return redirect("/");
+    } catch (error) {
+      toast.error(error.response.data.msg);
+    }
+    return null;
+  };
 
 const Login = () => {
   return (
@@ -30,7 +53,7 @@ const Login = () => {
         </div>
         <div className="mt-1 flex justify-between">
           <p>Forgot your password?</p>
-          <Link className="text-secondary" to="/register">
+          <Link to="/forgot-password" className="text-secondary">
             Reset password
           </Link>
         </div>

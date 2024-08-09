@@ -1,36 +1,17 @@
-import { IoIosHeartEmpty } from "react-icons/io";
 import { BiCartAlt } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
 import Navlinks from "./Navlinks";
-import { useEffect, useState } from "react";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
-import { useSelector } from "react-redux";
-
-const themes = {
-  acid: "acid",
-  dracula: "dracula",
-};
-
-const getThemeLocalStorage = (theme) => {
-  return localStorage.getItem("theme") || theme?.acid;
-};
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme } from "../features/user/userSlice";
 
 const Navbar = () => {
-  const [theme, setTheme] = useState(getThemeLocalStorage);
-
-  const changeTheme = () => {
-    const { acid, dracula } = themes;
-    const newTheme = theme === acid ? dracula : acid;
-    setTheme(newTheme);
-  };
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
   const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
+  const dispatch = useDispatch();
+  const changeTheme = () => {
+    dispatch(toggleTheme());
+  };
 
   return (
     <nav className=" bg-base-200">
@@ -39,9 +20,9 @@ const Navbar = () => {
           {/*  */}
           <NavLink
             to="/"
-            className="hidden lg:flex btn btn-primary text-3xl items-center "
+            className="hidden lg:flex btn btn-secondary text-3xl items-center "
           >
-            <span className="text-2xl text-accent">Estor</span>
+            <span className="text-2xl text-black">Estor</span>
           </NavLink>
           {/* dropdown */}
           <div className="dropdown">
@@ -67,14 +48,7 @@ const Navbar = () => {
             <BsSunFill className="swap-on h-4 w-4" />
             <BsMoonFill className="swap-off h-4 w-4" />
           </label>
-          <NavLink to="/" className="btn btn-ghost btn-circle btn-md ml-4">
-            <div className="indicator">
-              <IoIosHeartEmpty className="h-6 w-6" color="white" />
-              <span className="badge badge-sm badge-primary indicator-item">
-                2
-              </span>
-            </div>
-          </NavLink>
+
           <NavLink to="/cart" className="btn btn-ghost btn-circle btn-md ml-4">
             <div className="indicator">
               <BiCartAlt className="h-6 w-6" color="white" />
